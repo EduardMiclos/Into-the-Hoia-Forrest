@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - NPC
   layers:
   - Default
   - TransparentFX
@@ -12,7 +13,7 @@ TagManager:
   - Water
   - UI
   - Blocking
-  - 
+  - NPC
   - 
   - 
   - 
@@ -43,6 +44,9 @@ TagManager:
     locked: 0
   - name: Mapping
     uniqueID: 2992229187
+    locked: 0
+  - name: NPC
+    uniqueID: 3086509283
     locked: 0
   - name: Actor
     uniqueID: 2223775041

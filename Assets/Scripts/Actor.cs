@@ -63,7 +63,7 @@ public abstract class Actor : MonoBehaviour, Mover {
             angle: 0,
             direction: new Vector2(0, deltaTranslate.y),
             distance: Mathf.Abs(deltaTranslate.y * Time.deltaTime),
-            layerMask: LayerMask.GetMask("Blocking")
+            layerMask: LayerMask.GetMask("Blocking", "NPC", "Actor")
         );
 
         /* If the raycast is null, it means that 
@@ -84,7 +84,7 @@ public abstract class Actor : MonoBehaviour, Mover {
             angle: 0,
             direction: new Vector2(deltaTranslate.x, 0),
             distance: Mathf.Abs(deltaTranslate.x * Time.deltaTime),
-            layerMask: LayerMask.GetMask("Blocking")
+            layerMask: LayerMask.GetMask("Blocking", "NPC", "Actor")
         );
 
         if (raycastHit.collider == null)
