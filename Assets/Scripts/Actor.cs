@@ -8,8 +8,8 @@ public abstract class Actor : MonoBehaviour, Mover {
     public Vector3 deltaTranslate {get; set;}
     public RaycastHit2D raycastHit {get; set;}
     public Speed speed {get; set;}
-
     public Animator animator {get; set;}
+    public AudioSource audioSource {get; set;}
 
     private void swapSprite()
     {
@@ -20,6 +20,7 @@ public abstract class Actor : MonoBehaviour, Mover {
     {
         boxCollider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     protected void startWalkAnimation()
@@ -30,6 +31,19 @@ public abstract class Actor : MonoBehaviour, Mover {
     protected void stopWalkAnimation()
     {
         animator.SetBool("isWalking", false);
+    }
+
+    protected void startWalkSound()
+    {
+        if (audioSource.isPlaying == false)
+        {
+            audioSource.Play();
+        }
+    }
+
+    protected void stopWalkSound()
+    {
+        audioSource.Stop();
     }
 
     public void Move(Vector3 input)
@@ -48,10 +62,12 @@ public abstract class Actor : MonoBehaviour, Mover {
         if (deltaTranslate != Vector3.zero)
         {
             startWalkAnimation();
+            startWalkSound();
         }
         else
         {
             stopWalkAnimation();
+            stopWalkSound();
         }
 
 

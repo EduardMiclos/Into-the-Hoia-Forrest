@@ -7,16 +7,16 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager instance = null;
-
     private Queue<string> sentences;
 
     public Text nameText;
     public Text dialogText;
-
     public Animator animator;
 
-    private bool activeDialogue = false;
+    public bool activeDialogue = false;
 
+    /* We make the constructor private so we can
+    control the number of instances of this object. */
     private DialogueManager() {}
     void Start()
     {
@@ -32,7 +32,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (activeDialogue == false)
         {
-            animator.SetBool("IsOpen", true);
+            animator.SetBool("isOpen", true);
             activeDialogue = true;
             nameText.text = dialogue.name;
 
@@ -62,6 +62,9 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    /* This is a Coroutine. Basically, we write
+    a new letter every 0.02 seconds in order to give
+    it an animation effect. */
     IEnumerator TypeSentence(string sentence)
     {
         dialogText.text = "";
@@ -69,14 +72,22 @@ public class DialogueManager : MonoBehaviour
         foreach(char letter in sentence.ToCharArray())
         {
             dialogText.text += letter;
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.02f);
         }
     }
 
     private void EndDialogue()
     {
-        animator.SetBool("IsOpen", false);
+        animator.SetBool("isOpen", false);
         activeDialogue = false;
+    }
+
+    protected void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return) && activeDialogue == true)   
+        {
+            DisplayNextSentence();
+        }
     }
 
 }

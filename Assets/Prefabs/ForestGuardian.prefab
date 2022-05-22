@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 4060762810933804359}
   - component: {fileID: 4060762810933804353}
   - component: {fileID: 4060762810933804352}
+  - component: {fileID: 542313299}
+  - component: {fileID: 542313298}
+  - component: {fileID: 542313304}
   m_Layer: 7
   m_Name: ForestGuardian
   m_TagString: NPC
@@ -113,7 +116,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.0072803497, y: 0.04807873}
@@ -129,3 +132,97 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2416306, y: 0.786132}
   m_EdgeRadius: 0
+--- !u!50 &542313299
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4060762810933804356}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &542313298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4060762810933804356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5539c326862a40641bf299460b779e76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: "STR\u0102JERUL CODRULUI"
+    sentences:
+    - "Multe \u0219i neb\u0103nuite sunt c\u0103ile p\u0103durii Hoia Baciu."
+    - "Noi, str\u0103jerii codrului, s\u0103l\u0103\u0219luim aici de sute de ani
+      ca s\u0103 \u021Binem departe de om creaturile ce mi\u0219un\u0103 \xEEn p\u0103dure."
+    - "Mul\u021Bi sunt cei ce au p\u0103\u0219it pe aceste c\u0103r\u0103ri, pu\u021Bini
+      s-au mai intors. "
+    - "Cel dint\xE2i om care s-a ab\u0103tut \xEEn codru, baciul Hoia, nu a mai fost
+      g\u0103sit, ci numai spiritele oilor sale mai pot fi z\u0103rite pe timp de
+      noapte,"
+    - "fr\u0103m\xE2nt\xE2ndu-se, s\u0103rmanele, \u0219i c\u0103ut\xE2ndu-\u0219i
+      de at\xE2ta amar de timp st\u0103p\xE2nul."
+    - "De vei \xEEnt\xE2lni ori\u0219icare oaie, nu te sperie, ci apropie-te de d\xE2nsa
+      pentru a te re\xEEnsufle\u021Bi. Iar\u0103 de vei \xEEncepe a da de"
+    - "r\u0103m\u0103\u0219i\u021Bele regretatului Hoia, tu \xEEncepe a le str\xE2nge
+      pentru a culege roadele spiritului s\u0103u \u0219i ca s\u0103 afli locul s\u0103u
+      de veghe."
+    - "Fii cu mare b\u0103gare de seam\u0103, tinere aventurier. Nici mie nu-mi sunt
+      cunoscute toate tainele p\u0103durii."
+--- !u!114 &542313304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4060762810933804356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LightType: 0
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.63
+  m_Color: {r: 1, g: 0.98909175, b: 0, a: 1}
+  m_Intensity: 0
+  m_LightVolumeOpacity: 0
+  m_ApplyToSortingLayers: 0000000043cb59b2e364f8b7411d8c84bb8487ba
+  m_LightCookieSprite: {fileID: 0}
+  m_UseNormalMap: 0
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_ShadowIntensity: 0
+  m_ShadowVolumeIntensity: 0
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 1.1178018
+  m_PointLightOuterRadius: 1.5460286
+  m_PointLightDistance: 3
+  m_PointLightQuality: 1
+  m_ShapeLightParametricSides: 12
+  m_ShapeLightParametricAngleOffset: 151
+  m_ShapeLightParametricRadius: 0.18
+  m_ShapeLightFalloffSize: 0.87
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}

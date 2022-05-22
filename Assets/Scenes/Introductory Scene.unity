@@ -2924,51 +2924,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &542313297 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4060762810933804356, guid: 53939c19652e0b043be2411371461b77, type: 3}
-  m_PrefabInstance: {fileID: 4060762810391492117}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &542313298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 542313297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5539c326862a40641bf299460b779e76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    name: "STR\u0102JERUL CODRULUI"
-    sentences:
-    - Bine ai venit, aventurierule!
-    - "Ca s\u0103 vedem dac\u0103 esti gata sa patrunzi in padure, trebuie sa raspunzi
-      la cateva ghicitori."
-    - Ghicitoarea 1.
---- !u!50 &542313299
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 542313297}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &655535982
 GameObject:
   m_ObjectHideFlags: 0
@@ -7286,7 +7241,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20.81958, y: -273.48114}
+  m_AnchoredPosition: {x: 20.81958, y: -755}
   m_SizeDelta: {x: 1358.8198, y: 276.2592}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1321305743
@@ -7416,9 +7371,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'This is just a dummy dialogue don''t take it too
-
-    serious.'
+  m_Text: Test.
 --- !u!222 &1676951794
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7638,6 +7591,7 @@ MonoBehaviour:
   nameText: {fileID: 2114700998}
   dialogText: {fileID: 1676951793}
   animator: {fileID: 1321305745}
+  activeDialogue: 0
 --- !u!4 &1898883901
 Transform:
   m_ObjectHideFlags: 0
@@ -7785,10 +7739,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4060762810933804352, guid: 53939c19652e0b043be2411371461b77, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4060762810933804356, guid: 53939c19652e0b043be2411371461b77, type: 3}
       propertyPath: m_Name
       value: ForestGuardian
@@ -7799,7 +7749,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4060762810933804358, guid: 53939c19652e0b043be2411371461b77, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.62
+      value: 6.23
       objectReference: {fileID: 0}
     - target: {fileID: 4060762810933804358, guid: 53939c19652e0b043be2411371461b77, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7811,7 +7761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4060762810933804358, guid: 53939c19652e0b043be2411371461b77, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9999828
       objectReference: {fileID: 0}
     - target: {fileID: 4060762810933804358, guid: 53939c19652e0b043be2411371461b77, type: 3}
       propertyPath: m_LocalRotation.x
@@ -7823,7 +7773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4060762810933804358, guid: 53939c19652e0b043be2411371461b77, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.0058678864
       objectReference: {fileID: 0}
     - target: {fileID: 4060762810933804358, guid: 53939c19652e0b043be2411371461b77, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7846,12 +7796,24 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4439419389268168056, guid: 28ea80d99328f434c95bbb7519a94394, type: 3}
-      propertyPath: m_Name
-      value: Player
+    - target: {fileID: 190553285, guid: 28ea80d99328f434c95bbb7519a94394, type: 3}
+      propertyPath: m_Pitch
+      value: 1.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 190553285, guid: 28ea80d99328f434c95bbb7519a94394, type: 3}
+      propertyPath: m_Volume
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 190553285, guid: 28ea80d99328f434c95bbb7519a94394, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 190553285, guid: 28ea80d99328f434c95bbb7519a94394, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4439419389268168056, guid: 28ea80d99328f434c95bbb7519a94394, type: 3}
-      propertyPath: m_TagString
+      propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4439419389268168062, guid: 28ea80d99328f434c95bbb7519a94394, type: 3}
