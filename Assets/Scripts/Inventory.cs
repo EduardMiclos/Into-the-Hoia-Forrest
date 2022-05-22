@@ -1,13 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 
-public class Inventory
+public class Inventory : MonoBehaviour
 {
-    private List<Item> items;
+   private List<Item> backpackItems;
+   private List<Item> primaryItems;
+   private Item primaryWeapon;
 
-    internal void addItem(Item item)
+    public Inventory()
     {
-        items.Add(item);
+        backpackItems = new List<Item>();
+        primaryItems = new List<Item>();
+    }
+
+    internal void AddItem(Item item)
+    {
+        backpackItems.Add(item);
+        primaryItems.Add(item);
     }
 }

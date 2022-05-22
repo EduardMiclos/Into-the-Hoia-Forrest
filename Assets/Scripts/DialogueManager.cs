@@ -8,16 +8,17 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager instance = null;
 
+    /* We make the constructor private so we can
+    control the number of instances of this object. */
+    private DialogueManager() {}
+
+
     private NPC currentNPC;
     private Queue<string> sentences;
     public Text nameText;
     public Text dialogText;
     public Animator animator;
     public bool activeDialogue = false;
-
-    /* We make the constructor private so we can
-    control the number of instances of this object. */
-    private DialogueManager() {}
     void Start()
     {
         if (instance == null)
