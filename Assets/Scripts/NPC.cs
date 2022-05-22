@@ -22,10 +22,11 @@ public class NPC : Collidable
     {
         if(hadFirstInteraction == false && collider.tag.Equals("Player"))
         {
-            DialogueManager.instance.StartDialogue(dialogue);
-            hadFirstInteraction = true;
-
+            OnDialogStart();
             resetLightIntensity();
+
+            DialogueManager.instance.StartDialogue(dialogue, this);
+            hadFirstInteraction = true;
         }
     }
 
@@ -70,4 +71,13 @@ public class NPC : Collidable
         light2d = GetComponent<Light2D>();
         StartCoroutine(ChangeLightIntensity());
     }
+
+
+    /* This may or may not be implemented differently
+    depending on the NPC. */
+    internal virtual void OnDialogStart() {}
+
+    /* This may or may not be implemented differently
+    depending on the NPC. */
+    internal virtual void OnDialogEnd() {}
 }

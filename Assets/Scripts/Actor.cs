@@ -11,7 +11,9 @@ public abstract class Actor : MonoBehaviour, Mover {
     public Animator animator {get; set;}
     public AudioSource audioSource {get; set;}
 
-    private void swapSprite()
+    public Weapon weapon;
+
+    private void SwapSprite()
     {
         transform.localScale = new Vector3(deltaTranslate.x < 0 ? -1f : 1f, 1f, 1f);
     }
@@ -23,17 +25,17 @@ public abstract class Actor : MonoBehaviour, Mover {
         audioSource = GetComponent<AudioSource>();
     }
 
-    protected void startWalkAnimation()
+    protected void StartWalkAnimation()
     {
         animator.SetBool("isWalking", true);
     }
 
-    protected void stopWalkAnimation()
+    protected void StopWalkAnimation()
     {
         animator.SetBool("isWalking", false);
     }
 
-    protected void startWalkSound()
+    protected void PlayWalkSound()
     {
         if (audioSource.isPlaying == false)
         {
@@ -41,7 +43,7 @@ public abstract class Actor : MonoBehaviour, Mover {
         }
     }
 
-    protected void stopWalkSound()
+    protected void StopWalkSound()
     {
         audioSource.Stop();
     }
@@ -56,18 +58,18 @@ public abstract class Actor : MonoBehaviour, Mover {
         We swap the sprite accordingly. */
         if (deltaTranslate.x != 0)
         {
-            swapSprite();
+            SwapSprite();
         }
         
         if (deltaTranslate != Vector3.zero)
         {
-            startWalkAnimation();
-            startWalkSound();
+            StartWalkAnimation();
+            PlayWalkSound();
         }
         else
         {
-            stopWalkAnimation();
-            stopWalkSound();
+            StopWalkAnimation();
+            StopWalkSound();
         }
 
 

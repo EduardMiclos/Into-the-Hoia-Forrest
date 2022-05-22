@@ -7,12 +7,12 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager instance = null;
-    private Queue<string> sentences;
 
+    private NPC currentNPC;
+    private Queue<string> sentences;
     public Text nameText;
     public Text dialogText;
     public Animator animator;
-
     public bool activeDialogue = false;
 
     /* We make the constructor private so we can
@@ -28,10 +28,12 @@ public class DialogueManager : MonoBehaviour
     }
 
 
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue(Dialogue dialogue, NPC npc)
     {
         if (activeDialogue == false)
         {
+            currentNPC = npc;
+
             animator.SetBool("isOpen", true);
             activeDialogue = true;
             nameText.text = dialogue.name;
@@ -80,6 +82,9 @@ public class DialogueManager : MonoBehaviour
     {
         animator.SetBool("isOpen", false);
         activeDialogue = false;
+
+        currentNPC.OnDialogEnd();
+        currentNPC = null;
     }
 
     protected void Update()

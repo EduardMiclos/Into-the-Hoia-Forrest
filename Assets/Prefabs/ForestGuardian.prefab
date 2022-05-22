@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4060762810933804353}
   - component: {fileID: 4060762810933804352}
   - component: {fileID: 542313299}
-  - component: {fileID: 542313298}
   - component: {fileID: 542313304}
+  - component: {fileID: 542313298}
   m_Layer: 7
   m_Name: ForestGuardian
   m_TagString: NPC
@@ -153,38 +153,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &542313298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4060762810933804356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5539c326862a40641bf299460b779e76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    name: "STR\u0102JERUL CODRULUI"
-    sentences:
-    - "Multe \u0219i neb\u0103nuite sunt c\u0103ile p\u0103durii Hoia Baciu."
-    - "Noi, str\u0103jerii codrului, s\u0103l\u0103\u0219luim aici de sute de ani
-      ca s\u0103 \u021Binem departe de om creaturile ce mi\u0219un\u0103 \xEEn p\u0103dure."
-    - "Mul\u021Bi sunt cei ce au p\u0103\u0219it pe aceste c\u0103r\u0103ri, pu\u021Bini
-      s-au mai intors. "
-    - "Cel dint\xE2i om care s-a ab\u0103tut \xEEn codru, baciul Hoia, nu a mai fost
-      g\u0103sit, ci numai spiritele oilor sale mai pot fi z\u0103rite pe timp de
-      noapte,"
-    - "fr\u0103m\xE2nt\xE2ndu-se, s\u0103rmanele, \u0219i c\u0103ut\xE2ndu-\u0219i
-      de at\xE2ta amar de timp st\u0103p\xE2nul."
-    - "De vei \xEEnt\xE2lni ori\u0219icare oaie, nu te sperie, ci apropie-te de d\xE2nsa
-      pentru a te re\xEEnsufle\u021Bi. Iar\u0103 de vei \xEEncepe a da de"
-    - "r\u0103m\u0103\u0219i\u021Bele regretatului Hoia, tu \xEEncepe a le str\xE2nge
-      pentru a culege roadele spiritului s\u0103u \u0219i ca s\u0103 afli locul s\u0103u
-      de veghe."
-    - "Fii cu mare b\u0103gare de seam\u0103, tinere aventurier. Nici mie nu-mi sunt
-      cunoscute toate tainele p\u0103durii."
 --- !u!114 &542313304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,3 +194,38 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &542313298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4060762810933804356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fed6f14e8bd604744802798ec05aceb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: "STR\u0102JERUL CODRULUI"
+    sentences:
+    - "Multe \u0219i neb\u0103nuite sunt c\u0103ile p\u0103durii Hoia Baciu."
+    - "Noi, str\u0103jerii codrului, s\u0103l\u0103\u0219luim aici de sute de ani
+      ca s\u0103 \u021Binem departe de om creaturile ce mi\u0219un\u0103 \xEEn p\u0103dure."
+    - "Mul\u021Bi sunt cei ce au p\u0103\u0219it pe aceste c\u0103r\u0103ri, pu\u021Bini
+      s-au mai intors. "
+    - "Cel dint\xE2i om care s-a ab\u0103tut \xEEn codru, baciul Hoia, nu a mai fost
+      g\u0103sit, ci numai spiritele oilor sale mai pot fi z\u0103rite pe timp de
+      noapte,"
+    - "fr\u0103m\xE2nt\xE2ndu-se, s\u0103rmanele, \u0219i c\u0103ut\xE2ndu-\u0219i
+      de at\xE2ta amar de timp st\u0103p\xE2nul."
+    - "De vei \xEEnt\xE2lni ori\u0219icare oaie, nu te sperie, ci apropie-te de d\xE2nsa
+      pentru a te re\xEEnsufle\u021Bi. Iar\u0103 de vei \xEEncepe a da de"
+    - "r\u0103m\u0103\u0219i\u021Bele regretatului Hoia, tu \xEEncepe a le str\xE2nge
+      pentru a culege roadele spiritului s\u0103u \u0219i ca s\u0103 afli locul s\u0103u
+      de veghe."
+    - "Fii cu mare b\u0103gare de seam\u0103, tinere aventurier. Nici mie nu-mi sunt
+      cunoscute toate tainele p\u0103durii."
+    - "Prime\u0219te \xEEn dar aceast\u0103 sabie ca s\u0103 te apere pe timp de
+      zi \u0219i de noapte \xEEn c\u0103ut\u0103rile tale. "
+  player: {fileID: 0}

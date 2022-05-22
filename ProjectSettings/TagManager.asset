@@ -51,6 +51,9 @@ TagManager:
   - name: Actor
     uniqueID: 2223775041
     locked: 0
+  - name: Weapon
+    uniqueID: 3928300029
+    locked: 0
   - name: MappingAboveActor
     uniqueID: 3129443515
     locked: 0
