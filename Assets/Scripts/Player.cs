@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : Actor
 {
+    private Inventory playerInventory;
     public override void Start()
     {
         base.Start();

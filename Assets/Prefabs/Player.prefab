@@ -97,7 +97,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3a0382c8a0c56e3488f444ceba469482, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.778
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -212,6 +212,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 254665e99e2e8ca459521173786e41aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponSprites:
+  - {fileID: -4869357254534750094, guid: 58e8ebd951000ef4a9b0bb19798fac3d, type: 3}
 --- !u!1 &4439419389268168056
 GameObject:
   m_ObjectHideFlags: 0

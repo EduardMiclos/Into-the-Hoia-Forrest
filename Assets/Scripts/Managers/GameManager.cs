@@ -7,10 +7,6 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
     private GameManager() {}
 
-
-    [SerializeField]
-    private InventoryManager inventoryManager;
-
     void Start()
     {
         if (instance == null)
@@ -23,13 +19,13 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
-            if (inventoryManager.isOpen)
+            if (InventoryManager.instance.isInventoryOpen)
             {
-                inventoryManager.CloseInventory();
+                InventoryManager.instance.CloseInventory();
             }
             else
             {
-                inventoryManager.OpenInventory();
+                InventoryManager.instance.OpenInventory();
             }
         }
     }

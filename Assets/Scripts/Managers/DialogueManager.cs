@@ -12,22 +12,22 @@ public class DialogueManager : MonoBehaviour
     control the number of instances of this object. */
     private DialogueManager() {}
 
-
     private NPC currentNPC;
     private Queue<string> sentences;
     public Text nameText;
     public Text dialogText;
     public Animator animator;
     public bool activeDialogue = false;
+
     void Start()
     {
-        if (instance == null)
+         if (instance == null)
         {
             instance = this;
         }
+        
         sentences = new Queue<string>();    
     }
-
 
     public void StartDialogue(Dialogue dialogue, NPC npc)
     {
@@ -35,7 +35,6 @@ public class DialogueManager : MonoBehaviour
         {
             currentNPC = npc;
 
-            animator.SetBool("isOpen", true);
             activeDialogue = true;
             nameText.text = dialogue.name;
 
@@ -46,6 +45,7 @@ public class DialogueManager : MonoBehaviour
                 sentences.Enqueue(sentence);
             }
 
+            animator.SetBool("isOpen", true);
             DisplayNextSentence();
         }
     }

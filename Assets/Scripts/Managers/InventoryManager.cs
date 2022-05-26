@@ -4,30 +4,35 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    public static InventoryManager instance = null;
-
-    private InventoryManager() {}
-
-
     [SerializeField]
     private Animator animator;
+    public static InventoryManager instance = null;
+    private InventoryManager() {}
+    
+    internal bool isInventoryOpen;
 
-    internal bool isOpen;
+    void Awake()
+    {
+        isInventoryOpen = false;
+    }
 
     void Start()
     {
-        isOpen = false;
+        if (instance == null)
+        {
+            instance = this;
+        }
     }
 
     internal void OpenInventory()
     {
         animator.SetBool("isOpen", true);
-        isOpen = true;
+        isInventoryOpen = true;
     }
 
     internal void CloseInventory()
     {
         animator.SetBool("isOpen", false);
-        isOpen = false;
+        isInventoryOpen = false;
     }
 }

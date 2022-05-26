@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public class Weapon : MonoBehaviour, Item
 {
+    [SerializeField]
+    private Sprite[] weaponSprites;
+
+    public ItemType typeOfItem {get; set;}
+    public SpriteRenderer sprite {get; set;}
+    public int amount {get; set;}
+
+
     /* We play this audio source whenever the weapon is upgraded. */
     private AudioSource audioSource;
-
-    /* Current sprite. */
-    private SpriteRenderer sprite;
-
-     [SerializeField]
-    private Sprite[] weaponSprites;
 
     /* This is the weapon level. It will help us
     access different sprites from the weaponSprites array. */
@@ -21,6 +23,9 @@ public class Weapon : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         sprite = GetComponent<SpriteRenderer>();
+
+        typeOfItem = ItemType.Weapon;
+        amount = 1;
 
         /* Initially, the player has no weapons. */        
         weaponSkill = -1;
@@ -37,5 +42,14 @@ public class Weapon : MonoBehaviour
         sprite.sprite = weaponSprites[weaponSkill];
 
         PlayUpgradeSound();
+    }
+
+    public void increaseAmount()
+    {
+        amount++;
+    }
+    public void decreaseAmount()
+    {
+        amount--;
     }
 }

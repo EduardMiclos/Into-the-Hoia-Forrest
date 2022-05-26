@@ -16,31 +16,41 @@ public class CameraBehaviour : MonoBehaviour
     axis before the camera starts following him. */
     public float yMaxTargetDeviation = 0.3f;
 
+    private void translateOnX(ref Vector3 cameraTranslate, float xDeviation)
+    {
+       cameraTranslate.x = xDeviation - xMaxTargetDeviation;
+
+        if (target.position.x < transform.position.x)
+        {
+            cameraTranslate.x = - cameraTranslate.x;
+        }     
+    }
+
+    private void translateOnY(ref Vector3 cameraTranslate, float yDeviation)
+    {
+       cameraTranslate.y = yDeviation - yMaxTargetDeviation;
+
+        if (target.position.y < transform.position.y)
+        {
+            cameraTranslate.y = - cameraTranslate.y;
+        }     
+    }
+
     private void LateUpdate()
     {
         Vector3 cameraTranslate = Vector3.zero;
 
         float xDeviation = Mathf.Abs(target.position.x - transform.position.x);
-        float yDeviaton = Mathf.Abs(target.position.y - transform.position.y);
+        float yDeviation = Mathf.Abs(target.position.y - transform.position.y);
 
         if (xDeviation > xMaxTargetDeviation)
         {
-            cameraTranslate.x = xDeviation - xMaxTargetDeviation;
-
-            if (target.position.x < transform.position.x)
-            {
-                cameraTranslate.x = - cameraTranslate.x;
-            }
+            translateOnX(ref cameraTranslate, xDeviation);
         }
 
-        if (yDeviaton > yMaxTargetDeviation)
+        if (yDeviation > yMaxTargetDeviation)
         {
-            cameraTranslate.y = yDeviaton - yMaxTargetDeviation;
-
-            if (target.position.y < transform.position.y)
-            {
-                cameraTranslate.y = - cameraTranslate.y;
-            }
+            translateOnY(ref cameraTranslate, yDeviation);
         }
 
         transform.position += cameraTranslate;

@@ -21,8 +21,5 @@ public interface Mover {
     Animator animator {get; set;}
 
     /* To be implemented inside Actor class. */
-    void Start();
-
-    /* To be implemented inside Actor class. */
     void Move(Vector3 input);
 }
