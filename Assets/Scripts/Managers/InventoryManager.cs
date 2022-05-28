@@ -4,35 +4,75 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    [SerializeField]
-    private Animator animator;
     public static InventoryManager instance = null;
     private InventoryManager() {}
-    
+
+    public Inventory playerInventory;
+    public InventoryUI UIinventory;
+
+    public WeaponUI weaponUI;
+
     internal bool isInventoryOpen;
 
     void Awake()
-    {
-        isInventoryOpen = false;
-    }
-
-    void Start()
     {
         if (instance == null)
         {
             instance = this;
         }
-    }
+
+        isInventoryOpen = false;
+    } 
 
     internal void OpenInventory()
     {
-        animator.SetBool("isOpen", true);
+        UIinventory.OpenAnimation();
         isInventoryOpen = true;
     }
 
     internal void CloseInventory()
     {
-        animator.SetBool("isOpen", false);
+        UIinventory.CloseAnimation();
         isInventoryOpen = false;
+    }
+
+    public bool AddInventoryItem(Item item)
+    {
+        
+        if (playerInventory.backpackItems.Count < playerInventory.backpackCapacity)
+        {
+            UIinventory.AddBackpackItem(item, playerInventory.backpackItems.Count);
+            playerInventory.AddBackpackItem(item);
+            return true;
+        }
+
+        if (playerInventory.primaryItems.Count < playerInventory.primaryCapacity)
+        {
+            playerInventory.AddPrimaryItem(item);
+            return true;
+        }
+
+        return false;
+    }
+
+    public void AddWeapon()
+    {
+        AddWeapon(new Weapon());
+    }
+
+    public void AddWeapon(Weapon givenWeapon)
+    {
+        if (playerInventory.primaryWeapon == null)
+        {
+            playerInventory.primaryWeapon = givenWeapon;
+            weaponUI.PlayUpgradeSound();
+            UIinventory.AddPrimaryWeapon(givenWeapon);
+        }
+        else
+        {
+            AddInventoryItem(givenWeapon);
+        }
+
+        weaponUI.spriteRenderer.sprite = givenWeapon.sprite;
     }
 }

@@ -21,26 +21,36 @@ public class DialogueManager : MonoBehaviour
 
     void Start()
     {
-         if (instance == null)
+        if (instance == null)
         {
             instance = this;
         }
-        
+
         sentences = new Queue<string>();    
     }
 
-    public void StartDialogue(Dialogue dialogue, NPC npc)
+    public static DialogueManager getInstance()
+    {
+        if (instance == null)
+        {
+            GameObject gameObject = new GameObject();
+            instance = gameObject.AddComponent<DialogueManager>();
+        }
+        return instance;
+    }
+
+    public void StartDialogue(NPC npc)
     {
         if (activeDialogue == false)
         {
             currentNPC = npc;
-
             activeDialogue = true;
-            nameText.text = dialogue.name;
+
+            nameText.text = npc.dialogue.title;
 
             sentences.Clear();
 
-            foreach (string sentence in dialogue.sentences)
+            foreach (string sentence in npc.dialogue.sentences)
             {
                 sentences.Enqueue(sentence);
             }

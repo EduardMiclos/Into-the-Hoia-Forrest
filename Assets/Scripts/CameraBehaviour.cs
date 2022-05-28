@@ -16,7 +16,7 @@ public class CameraBehaviour : MonoBehaviour
     axis before the camera starts following him. */
     public float yMaxTargetDeviation = 0.3f;
 
-    private void translateOnX(ref Vector3 cameraTranslate, float xDeviation)
+    private void TranslateOnX(ref Vector3 cameraTranslate, float xDeviation)
     {
        cameraTranslate.x = xDeviation - xMaxTargetDeviation;
 
@@ -26,7 +26,7 @@ public class CameraBehaviour : MonoBehaviour
         }     
     }
 
-    private void translateOnY(ref Vector3 cameraTranslate, float yDeviation)
+    private void TranslateOnY(ref Vector3 cameraTranslate, float yDeviation)
     {
        cameraTranslate.y = yDeviation - yMaxTargetDeviation;
 
@@ -45,12 +45,12 @@ public class CameraBehaviour : MonoBehaviour
 
         if (xDeviation > xMaxTargetDeviation)
         {
-            translateOnX(ref cameraTranslate, xDeviation);
+            TranslateOnX(ref cameraTranslate, xDeviation);
         }
 
         if (yDeviation > yMaxTargetDeviation)
         {
-            translateOnY(ref cameraTranslate, yDeviation);
+            TranslateOnY(ref cameraTranslate, yDeviation);
         }
 
         transform.position += cameraTranslate;

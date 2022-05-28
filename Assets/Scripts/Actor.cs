@@ -11,7 +11,7 @@ public abstract class Actor : MonoBehaviour, Mover {
     public Animator animator {get; set;}
     public AudioSource audioSource {get; set;}
 
-    public Weapon weapon;
+    public WeaponUI weapon;
 
     private void SwapSprite()
     {

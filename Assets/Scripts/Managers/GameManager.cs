@@ -6,13 +6,24 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
     private GameManager() {}
+    public Speed initialPlayerSpeed = new Speed(4f, 4f);
 
-    void Start()
+    void Awake() 
     {
         if (instance == null)
         {
             instance = this;
         }
+    }
+
+    public GameManager getInstance()
+    {
+        if (instance == null)
+        {
+            GameObject gameObject = new GameObject();
+            instance = gameObject.AddComponent<GameManager>();
+        }
+        return instance;
     }
 
     void Update()

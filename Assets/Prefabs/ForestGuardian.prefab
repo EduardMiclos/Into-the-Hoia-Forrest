@@ -207,25 +207,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: "STR\u0102JERUL CODRULUI"
+    title: "STR\u0102JERUL CODRULUI"
     sentences:
-    - "Multe \u0219i neb\u0103nuite sunt c\u0103ile p\u0103durii Hoia Baciu."
-    - "Noi, str\u0103jerii codrului, s\u0103l\u0103\u0219luim aici de sute de ani
-      ca s\u0103 \u021Binem departe de om creaturile ce mi\u0219un\u0103 \xEEn p\u0103dure."
-    - "Mul\u021Bi sunt cei ce au p\u0103\u0219it pe aceste c\u0103r\u0103ri, pu\u021Bini
-      s-au mai intors. "
-    - "Cel dint\xE2i om care s-a ab\u0103tut \xEEn codru, baciul Hoia, nu a mai fost
-      g\u0103sit, ci numai spiritele oilor sale mai pot fi z\u0103rite pe timp de
-      noapte,"
-    - "fr\u0103m\xE2nt\xE2ndu-se, s\u0103rmanele, \u0219i c\u0103ut\xE2ndu-\u0219i
-      de at\xE2ta amar de timp st\u0103p\xE2nul."
-    - "De vei \xEEnt\xE2lni ori\u0219icare oaie, nu te sperie, ci apropie-te de d\xE2nsa
-      pentru a te re\xEEnsufle\u021Bi. Iar\u0103 de vei \xEEncepe a da de"
-    - "r\u0103m\u0103\u0219i\u021Bele regretatului Hoia, tu \xEEncepe a le str\xE2nge
-      pentru a culege roadele spiritului s\u0103u \u0219i ca s\u0103 afli locul s\u0103u
-      de veghe."
+    - "Multe ?i neb\u0103nuite sunt c\u0103ile P\u0103durii Hoia Baciu."
+    - "Noi, str\u0103jerii codrului, st\u0103ruim aici de sute de ani ca s\u0103
+      ?inem departe de om creaturile ce mi?un\u0103 aici."
+    - "Mul?i sunt cei ce au p\u0103?it pe aceste c\u0103r\u0103ri, pu?ini s-au mai
+      \xEEntors."
+    - "Cel dint\xE2i om care s-a ab\u0103tut \xEEn acest codru, baciul Hoia, nu a
+      mai fost g\u0103sit, ci numai spiritele oilor sale mai pot fi z\u0103rite pe
+      timp de noapte,"
+    - "fr\u0103m\xE2nt\xE2ndu-se, s\u0103rmanele, ?i c\u0103ut\xE2ndu-?i de at\xE2ta
+      amar de vreme st\u0103p\xE2nul"
+    - "De vei z\u0103ri ori?icare oaie, nu te sperie, ci apropie-te de d\xE2nsa pentru
+      a te re\xEEnsufle?i. Iar de vei da de"
+    - "r\u0103m\u0103?i?ele regretatului Horia, tu \xEEncepe a le str\xE2nge pentru
+      a culege roadele spiritului s\u0103u ?i ca s\u0103-i afli locul de veghe."
     - "Fii cu mare b\u0103gare de seam\u0103, tinere aventurier. Nici mie nu-mi sunt
       cunoscute toate tainele p\u0103durii."
-    - "Prime\u0219te \xEEn dar aceast\u0103 sabie ca s\u0103 te apere pe timp de
-      zi \u0219i de noapte \xEEn c\u0103ut\u0103rile tale. "
+    - "Prime?te \xEEn dar aceast\u0103 sabie ca s\u0103 apere pe timp de zi ?i de
+      noapte c\u0103ut\u0103rile tale."
   player: {fileID: 0}

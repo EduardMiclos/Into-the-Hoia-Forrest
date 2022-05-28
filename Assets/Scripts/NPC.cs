@@ -15,7 +15,7 @@ public class NPC : Collidable
     protected override void Start()
     {
         base.Start();
-        markAsInteractable();
+        MarkAsInteractable();
     }
 
     protected override void OnCollide(Collider2D collider)
@@ -23,14 +23,14 @@ public class NPC : Collidable
         if(hadFirstInteraction == false && collider.tag.Equals("Player"))
         {
             OnDialogStart();
-            resetLightIntensity();
+            ResetLightIntensity();
 
-            DialogueManager.instance.StartDialogue(dialogue, this);
+            DialogueManager.getInstance().StartDialogue(this);
             hadFirstInteraction = true;
         }
     }
 
-    private void resetLightIntensity()
+    private void ResetLightIntensity()
     {
         light2d.intensity = 0.0f;
     }
@@ -66,7 +66,7 @@ public class NPC : Collidable
 
     }
 
-    private void markAsInteractable()
+    private void MarkAsInteractable()
     {
         light2d = GetComponent<Light2D>();
         StartCoroutine(ChangeLightIntensity());
