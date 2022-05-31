@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,11 +9,12 @@ public class InventoryManager : MonoBehaviour
     private InventoryManager() {}
 
     public Inventory playerInventory;
-    public InventoryUI UIinventory;
-
-    public WeaponUI weaponUI;
+    public InventoryUI UIInventory;
+    public InventoryMenu inventoryMenu;
 
     internal bool isInventoryOpen;
+
+    public WeaponUI visualWeaponObject;
 
     void Awake()
     {
@@ -20,42 +22,93 @@ public class InventoryManager : MonoBehaviour
         {
             instance = this;
         }
-
-        isInventoryOpen = false;
-    } 
+    }
 
     internal void OpenInventory()
     {
-        UIinventory.OpenAnimation();
+        UIInventory.OpenAnimation();
         isInventoryOpen = true;
     }
 
     internal void CloseInventory()
     {
-        UIinventory.CloseAnimation();
+        UIInventory.CloseAnimation();
         isInventoryOpen = false;
+    }
+
+    private Item ItemInSubinventory(Item item, List<Item> subInventory, out int itemIndex)
+    {
+        int i = -1;
+        itemIndex = -1;
+
+        foreach (Item itrItem in subInventory)
+        {
+            i++;
+            if (itrItem.typeOfItem == item.typeOfItem)
+            {
+                if ((itrItem.typeOfItem == ItemType.Weapon) &&
+                    ((Weapon)itrItem).weaponSkill != ((Weapon)item).weaponSkill)
+                {
+                    continue;
+                }
+
+                itemIndex = i;
+                return itrItem;
+            }
+        }
+
+        return null;
+    }
+    
+    private Item ItemInBackpack(Item item, out int itemIndex)
+    {
+        return ItemInSubinventory(item, playerInventory.backpackItems, out itemIndex);
+    }
+
+    private Item ItemInPrimary(Item item, out int itemIndex)
+    {
+        return ItemInSubinventory(item, playerInventory.primaryItems, out itemIndex);
     }
 
     public bool AddInventoryItem(Item item)
     {
-        
+        Item matchedItem;
+        int itemIndex;
+
+        if ((matchedItem = ItemInBackpack(item, out itemIndex)) != null)
+        {
+            matchedItem.IncreaseAmount();
+            UIInventory.SetBackpackItemAmount(matchedItem.amount, itemIndex);
+            return true;
+        }
+
+        if ((matchedItem = ItemInPrimary(item, out itemIndex)) != null)
+        {
+            matchedItem.IncreaseAmount();
+            UIInventory.SetPrimaryItemAmount(matchedItem.amount, itemIndex);
+            return true;
+        }
+
         if (playerInventory.backpackItems.Count < playerInventory.backpackCapacity)
         {
-            UIinventory.AddBackpackItem(item, playerInventory.backpackItems.Count);
+            UIInventory.AddBackpackItem(item, playerInventory.backpackItems.Count);
             playerInventory.AddBackpackItem(item);
+
             return true;
         }
 
         if (playerInventory.primaryItems.Count < playerInventory.primaryCapacity)
         {
+            UIInventory.AddPrimaryItem(item, playerInventory.primaryItems.Count);
             playerInventory.AddPrimaryItem(item);
+
             return true;
         }
 
         return false;
     }
 
-    public void AddWeapon()
+    public void AddDefaultWeapon()
     {
         AddWeapon(new Weapon());
     }
@@ -65,14 +118,25 @@ public class InventoryManager : MonoBehaviour
         if (playerInventory.primaryWeapon == null)
         {
             playerInventory.primaryWeapon = givenWeapon;
-            weaponUI.PlayUpgradeSound();
-            UIinventory.AddPrimaryWeapon(givenWeapon);
+            visualWeaponObject.PlayUpgradeSound();
+
+            UIInventory.AddPrimaryWeapon(givenWeapon);
         }
         else
         {
-            AddInventoryItem(givenWeapon);
+            Weapon playerWeapon = (Weapon)playerInventory.primaryWeapon;
+            if (givenWeapon.weaponSkill == playerWeapon.weaponSkill)
+            {
+                playerWeapon.IncreaseAmount();
+                UIInventory.SetPrimaryWeaponAmount(playerWeapon.amount);
+            }
+            else
+            {
+                AddInventoryItem(givenWeapon);
+            }
+
         }
 
-        weaponUI.spriteRenderer.sprite = givenWeapon.sprite;
+        visualWeaponObject.spriteRenderer.sprite = givenWeapon.sprite;
     }
 }

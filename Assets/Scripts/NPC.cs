@@ -25,7 +25,7 @@ public class NPC : Collidable
             OnDialogStart();
             ResetLightIntensity();
 
-            DialogueManager.getInstance().StartDialogue(this);
+            DialogueManager.GetInstance().StartDialogue(this);
             hadFirstInteraction = true;
         }
     }

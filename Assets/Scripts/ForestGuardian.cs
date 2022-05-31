@@ -5,7 +5,10 @@ using UnityEngine;
 public class ForestGuardian : NPC
 {
     internal override void OnDialogEnd() 
-    {
-        InventoryManager.instance.AddWeapon();
+    {          
+        InventoryManager.instance.AddDefaultWeapon();
+
+        Coin givenCoins = new Coin().WithAmount(12);
+        InventoryManager.instance.AddInventoryItem(givenCoins);
     }
 }

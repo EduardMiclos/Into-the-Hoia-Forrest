@@ -5,7 +5,9 @@ using UnityEngine;
 public class ItemSprites : MonoBehaviour
 {
     public static ItemSprites instance = null;
+
     public Sprite[] weapons;
+
     public Sprite coin;
 
     void Awake()

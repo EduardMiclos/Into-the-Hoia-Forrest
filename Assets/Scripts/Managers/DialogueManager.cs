@@ -29,7 +29,7 @@ public class DialogueManager : MonoBehaviour
         sentences = new Queue<string>();    
     }
 
-    public static DialogueManager getInstance()
+    public static DialogueManager GetInstance()
     {
         if (instance == null)
         {
