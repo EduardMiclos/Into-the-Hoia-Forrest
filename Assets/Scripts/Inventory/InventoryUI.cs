@@ -9,8 +9,16 @@ public class InventoryUI : MonoBehaviour
     public GameObject Items { get; set; }
     public GameObject PrimaryItems { get; set; }
     public GameObject PrimaryWeapon { get; set; }
-
+    
     public GameObject inventoryItemPrefab;
+
+
+    public static Color inactiveSlotColor = new Color(1f, 1f, 1f, 0.78f);
+    public static Color activeSlotColor = new Color(0.75f, 1f, 0.94f, 0.78f);
+
+    public static Color activeButtonColor = new Color(0.3481132f, 0.3646901f, 0.3867925f, 0.6901961f);
+    public static Color inactiveButtonColor = new Color(0.4433962f, 0.106972f, 0.08114985f, 0.7568628f);
+
 
     void Awake()
     {
@@ -105,5 +113,33 @@ public class InventoryUI : MonoBehaviour
         SetItemAmount(inventoryItem, amount);
 
         inventoryItem.transform.SetSiblingIndex(0);
+    }
+
+    public void DisplayActiveSlot(GameObject itemSlot, bool activeValue)
+    {
+        if (activeValue == true)
+        {
+            itemSlot.GetComponent<Image>().color = InventoryUI.activeSlotColor;
+        }
+        else
+        {
+            itemSlot.GetComponent<Image>().color = InventoryUI.inactiveSlotColor;
+        }
+    }
+
+    public void SetWeaponSelectButtonActive(GameObject obj, bool activeValue)
+    {
+        GameObject button = GameManager.GetObjectChild(obj, "BtnSetPrimaryWeapon");
+        button.GetComponent<Button>().enabled = activeValue;
+        
+        if (activeValue == true)
+        {
+            button.GetComponent<Image>().color = InventoryUI.activeButtonColor;
+        }
+        else
+        {
+            button.GetComponent<Image>().color = InventoryUI.inactiveButtonColor;
+        }
+
     }
 }

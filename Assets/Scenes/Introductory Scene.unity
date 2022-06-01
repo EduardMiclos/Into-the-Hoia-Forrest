@@ -3493,30 +3493,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &442867793 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6199022809261798396, guid: 24feb1ea0dfb76e408b829933296a8ec, type: 3}
-  m_PrefabInstance: {fileID: 6199022809167057837}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &442867794 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6199022809261798399, guid: 24feb1ea0dfb76e408b829933296a8ec, type: 3}
   m_PrefabInstance: {fileID: 6199022809167057837}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &442867795
+--- !u!114 &442867795 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 442867795, guid: 24feb1ea0dfb76e408b829933296a8ec, type: 3}
+  m_PrefabInstance: {fileID: 6199022809167057837}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 442867793}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a842efd3aebf6943be34e69bff10b62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isActive: 0
-  currentAttachmentObject: {fileID: 0}
 --- !u!1 &480056406
 GameObject:
   m_ObjectHideFlags: 0
@@ -12211,7 +12203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 542313298, guid: 53939c19652e0b043be2411371461b77, type: 3}
       propertyPath: dialogue.sentences.Array.data[6]
-      value: "r\u0103m\u0103\u0219i\u021Bele regretatului Horia, tu \xEEncepe a le
+      value: "r\u0103m\u0103\u0219i\u021Bele regretatului Hoia, tu \xEEncepe a le
         str\xE2nge pentru a culege roadele spiritului s\u0103u \u0219i ca s\u0103-i
         afli locul de veghe."
       objectReference: {fileID: 0}
@@ -12339,6 +12331,54 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1851732792}
     m_Modifications:
+    - target: {fileID: 139367722711778667, guid: 24feb1ea0dfb76e408b829933296a8ec, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 164
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911241805662452589, guid: 24feb1ea0dfb76e408b829933296a8ec, type: 3}
+      propertyPath: m_Color.a
+      value: 0.35686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911241805662452589, guid: 24feb1ea0dfb76e408b829933296a8ec, type: 3}
+      propertyPath: m_Color.b
+      value: 0.08114985
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911241805662452589, guid: 24feb1ea0dfb76e408b829933296a8ec, type: 3}
+      propertyPath: m_Color.g
+      value: 0.10697197
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911241805662452589, guid: 24feb1ea0dfb76e408b829933296a8ec, type: 3}
+      propertyPath: m_Color.r
+      value: 0.4433962
+      objectReference: {fileID: 0}
+    - target: {fileID: 6199022808592175106, guid: 24feb1ea0dfb76e408b829933296a8ec, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6199022808592175106, guid: 24feb1ea0dfb76e408b829933296a8ec, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6199022808592175106, guid: 24feb1ea0dfb76e408b829933296a8ec, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 442867795}
+    - target: {fileID: 6199022808592175106, guid: 24feb1ea0dfb76e408b829933296a8ec, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6199022808592175106, guid: 24feb1ea0dfb76e408b829933296a8ec, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BtnMoveToF_OnPress
+      objectReference: {fileID: 0}
+    - target: {fileID: 6199022808592175106, guid: 24feb1ea0dfb76e408b829933296a8ec, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: InventoryMenu, Scripts
+      objectReference: {fileID: 0}
+    - target: {fileID: 6199022808592175106, guid: 24feb1ea0dfb76e408b829933296a8ec, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6199022809261798396, guid: 24feb1ea0dfb76e408b829933296a8ec, type: 3}
       propertyPath: m_Name
       value: Inventory Menu
@@ -12377,7 +12417,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6199022809261798399, guid: 24feb1ea0dfb76e408b829933296a8ec, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 169.71411
+      value: 167.032
       objectReference: {fileID: 0}
     - target: {fileID: 6199022809261798399, guid: 24feb1ea0dfb76e408b829933296a8ec, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12413,7 +12453,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6199022809261798399, guid: 24feb1ea0dfb76e408b829933296a8ec, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 330
+      value: 224.68
       objectReference: {fileID: 0}
     - target: {fileID: 6199022809261798399, guid: 24feb1ea0dfb76e408b829933296a8ec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -12426,6 +12466,14 @@ PrefabInstance:
     - target: {fileID: 6199022809261798399, guid: 24feb1ea0dfb76e408b829933296a8ec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8187722331328063070, guid: 24feb1ea0dfb76e408b829933296a8ec, type: 3}
+      propertyPath: m_Name
+      value: BtnSetPrimaryWeapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 8362601759552731916, guid: 24feb1ea0dfb76e408b829933296a8ec, type: 3}
+      propertyPath: m_Text
+      value: "SETEAZ\u0102 CA ARM\u0102"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24feb1ea0dfb76e408b829933296a8ec, type: 3}

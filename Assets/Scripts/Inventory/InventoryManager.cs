@@ -36,7 +36,7 @@ public class InventoryManager : MonoBehaviour
         isInventoryOpen = false;
     }
 
-    private Item ItemInSubinventory(Item item, List<Item> subInventory, out int itemIndex)
+    private Item IsItemInSubinventory(Item item, List<Item> subInventory, out int itemIndex)
     {
         int i = -1;
         itemIndex = -1;
@@ -44,7 +44,8 @@ public class InventoryManager : MonoBehaviour
         foreach (Item itrItem in subInventory)
         {
             i++;
-            if (itrItem.typeOfItem == item.typeOfItem)
+
+            if (itrItem != null && itrItem.typeOfItem == item.typeOfItem)
             {
                 if ((itrItem.typeOfItem == ItemType.Weapon) &&
                     ((Weapon)itrItem).weaponSkill != ((Weapon)item).weaponSkill)
@@ -60,14 +61,14 @@ public class InventoryManager : MonoBehaviour
         return null;
     }
     
-    private Item ItemInBackpack(Item item, out int itemIndex)
+    private Item IsItemInBackpack(Item item, out int itemIndex)
     {
-        return ItemInSubinventory(item, playerInventory.backpackItems, out itemIndex);
+        return IsItemInSubinventory(item, playerInventory.backpackItems, out itemIndex);
     }
 
-    private Item ItemInPrimary(Item item, out int itemIndex)
+    private Item IsItemInPrimary(Item item, out int itemIndex)
     {
-        return ItemInSubinventory(item, playerInventory.primaryItems, out itemIndex);
+        return IsItemInSubinventory(item, playerInventory.primaryItems, out itemIndex);
     }
 
     public bool AddInventoryItem(Item item)
@@ -75,34 +76,45 @@ public class InventoryManager : MonoBehaviour
         Item matchedItem;
         int itemIndex;
 
-        if ((matchedItem = ItemInBackpack(item, out itemIndex)) != null)
+        if ((matchedItem = IsItemInBackpack(item, out itemIndex)) != null)
         {
             matchedItem.IncreaseAmount();
             UIInventory.SetBackpackItemAmount(matchedItem.amount, itemIndex);
             return true;
         }
 
-        if ((matchedItem = ItemInPrimary(item, out itemIndex)) != null)
+        if ((matchedItem = IsItemInPrimary(item, out itemIndex)) != null)
         {
             matchedItem.IncreaseAmount();
             UIInventory.SetPrimaryItemAmount(matchedItem.amount, itemIndex);
             return true;
         }
 
-        if (playerInventory.backpackItems.Count < playerInventory.backpackCapacity)
+        if (playerInventory.freeBackpackSlots.Count > 0)
         {
-            UIInventory.AddBackpackItem(item, playerInventory.backpackItems.Count);
-            playerInventory.AddBackpackItem(item);
+            
+            int itemSlot = playerInventory.AddBackpackItem(item);
 
-            return true;
+            if (itemSlot != -1)
+            {
+                UIInventory.AddBackpackItem(item, itemSlot);
+                return true;
+            }
+
+            return false;
         }
 
-        if (playerInventory.primaryItems.Count < playerInventory.primaryCapacity)
+        if (playerInventory.primaryItems.Count > 0)
         {
-            UIInventory.AddPrimaryItem(item, playerInventory.primaryItems.Count);
-            playerInventory.AddPrimaryItem(item);
+            int itemSlot = playerInventory.AddPrimaryItem(item);
 
-            return true;
+            if (itemSlot != -1)
+            {
+                UIInventory.AddPrimaryItem(item, itemSlot);
+                return true;
+            }
+
+            return false;
         }
 
         return false;

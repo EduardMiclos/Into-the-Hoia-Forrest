@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : Actor
 {
-    private Inventory inventory;
+    public Inventory inventory { get; set; }
 
     public override void Start()
     {
@@ -21,11 +21,4 @@ public class Player : Actor
 
         Move(new Vector3(moveX, moveY, 0));
     }
-
-    // public void AddWeapon()
-    // {   Weapon weapon;
-
-    //     weapon = Instantiate(weapon, this.transform);
-    //     weapon.Upgrade();
-    // }
 }

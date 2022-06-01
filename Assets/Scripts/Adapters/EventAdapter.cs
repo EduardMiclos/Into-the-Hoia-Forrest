@@ -40,42 +40,79 @@ public class EventAdapter : MonoBehaviour
         return Input.GetKeyDown(keyCode);
     }
 
-    public bool ButtonPressed(int inventoryType, int slotIndex)
+    public bool ButtonPressed(int subinventoryType, int slotIndex)
     {
         GameObject pressedObject = null;
-        
-        switch (inventoryType)
+        Item selectedItem = null;
+        bool isPrimaryWeapon = false;
+
+        switch (subinventoryType)
         {
-            /* Backpack. */
+            /* Backpack items. */
             case 0:
-               pressedObject = GameManager.GetObjectChild (
-                   obj: InventoryManager.instance.UIInventory.Items, 
-                   childName: slotIndex.ToString());
+                selectedItem = InventoryManager.instance.playerInventory.backpackItems[slotIndex];
+                if (selectedItem == null)
+                {
+                    return false;
+                }
+
+                pressedObject = GameManager.GetObjectChild(
+                    obj: InventoryManager.instance.UIInventory.Items,
+                    childName: slotIndex.ToString());
                 break;
+
             /* Primary items. */
             case 1:
+                selectedItem = InventoryManager.instance.playerInventory.primaryItems[slotIndex];
+                if (selectedItem == null)
+                {
+                    return false;
+                }
+
                 pressedObject = GameManager.GetObjectChild(
                    obj: InventoryManager.instance.UIInventory.PrimaryItems,
                    childName: slotIndex.ToString());
                 break;
+
             /* Primary Weapon. */
             case 2:
+                selectedItem = InventoryManager.instance.playerInventory.primaryWeapon;
+                if (selectedItem == null)
+                {
+                    return false;
+                }
                 pressedObject = InventoryManager.instance.UIInventory.PrimaryWeapon;
+                isPrimaryWeapon = true;
                 break;
             default:
                 return false;
         }
 
+        if (selectedItem.typeOfItem != ItemType.Weapon || isPrimaryWeapon == true)
+        {
+            InventoryManager.instance.UIInventory.SetWeaponSelectButtonActive(InventoryManager.instance.inventoryMenu.gameObject, false);
+        }
+        else
+        {
+            InventoryManager.instance.UIInventory.SetWeaponSelectButtonActive(InventoryManager.instance.inventoryMenu.gameObject, true);
+        }
 
 
         if (InventoryManager.instance.inventoryMenu.isActive == true &&
             InventoryManager.instance.inventoryMenu.currentAttachmentObject == pressedObject)
         {
             InventoryManager.instance.inventoryMenu.SetActive(false);
+            InventoryManager.instance.UIInventory.DisplayActiveSlot(pressedObject, false);
         }
         else
         {
-            InventoryManager.instance.inventoryMenu.SetActive(true).AttachedToGameObject(pressedObject);
+            if (InventoryManager.instance.inventoryMenu.currentAttachmentObject != null)
+            {
+                InventoryManager.instance.UIInventory.DisplayActiveSlot(InventoryManager.instance.inventoryMenu.currentAttachmentObject, false);
+            }
+
+            InventoryManager.instance.inventoryMenu.AttachToGameObject(pressedObject, subinventoryType, slotIndex).SetActive(true);
+            InventoryManager.instance.UIInventory.DisplayActiveSlot(pressedObject, true);
         }
 
         return true;
