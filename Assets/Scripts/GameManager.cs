@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private EventAdapter eventAdapter;
 
+    [SerializeField]
+    private Teleport teleport;
+
     void Awake() 
     {
         if (instance == null)
@@ -64,5 +67,10 @@ public class GameManager : MonoBehaviour
         }
 
         return childTransform.gameObject;
+    }
+
+    public void ActivateTeleport()
+    {
+        teleport.isActive = true;
     }
 }
