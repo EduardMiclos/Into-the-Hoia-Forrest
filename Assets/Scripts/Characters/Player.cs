@@ -9,6 +9,7 @@ public class Player : Actor
     public override void Start()
     {
         base.Start();
+        DontDestroyOnLoad(gameObject);
 
         speed = GameManager.instance.initialPlayerSpeed;
         inventory = InventoryManager.instance.playerInventory;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class GameManager : MonoBehaviour
     private GameManager() { }
 
     public Speed initialPlayerSpeed = new Speed(4f, 4f);
+    private Vector3 onSceneStartPlayerPosition = new Vector3(-7.39f, 0.06f, 0f);
+
+    [SerializeField]
+    private Player player;
 
     [SerializeField]
     private EventAdapter eventAdapter;
@@ -21,6 +26,9 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        DontDestroyOnLoad(gameObject);
     }
 
     void Start()
@@ -30,6 +38,11 @@ public class GameManager : MonoBehaviour
             BackpackItems: InventoryManager.instance.UIInventory.Items,
             PrimaryItems: InventoryManager.instance.UIInventory.PrimaryItems,
             PrimaryWeapon: InventoryManager.instance.UIInventory.PrimaryWeapon);
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        player.transform.position = onSceneStartPlayerPosition;
     }
 
     public GameManager GetInstance()

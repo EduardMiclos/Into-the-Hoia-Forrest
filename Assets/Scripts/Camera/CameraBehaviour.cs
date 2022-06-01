@@ -16,6 +16,11 @@ public class CameraBehaviour : MonoBehaviour
     axis before the camera starts following him. */
     public float yMaxTargetDeviation = 0.3f;
 
+    void Start()
+    {
+        target = GameObject.Find("Player").transform;
+    }
+
     private void TranslateOnX(ref Vector3 cameraTranslate, float xDeviation)
     {
        cameraTranslate.x = xDeviation - xMaxTargetDeviation;
