@@ -160,12 +160,14 @@ public class InventoryManager : MonoBehaviour
     {
         GameObject FSlot = GameManager.GetObjectChild(UIInventory.PrimaryItems, "0");
         InterchangeItems(currentItemSlot, FSlot, inventoryType, slotIndex, InventoryType.Primary, 0);
+        UIInventory.DisplayActiveSlot(inventoryMenu.currentAttachmentObject, false);
     }
 
     public void MoveItemToG(GameObject currentItemSlot, InventoryType inventoryType, int slotIndex)
     {
         GameObject GSlot = GameManager.GetObjectChild(UIInventory.PrimaryItems, "1");
         InterchangeItems(currentItemSlot, GSlot, inventoryType, slotIndex, InventoryType.Primary, 1);
+        UIInventory.DisplayActiveSlot(inventoryMenu.currentAttachmentObject, false);
     }
 
     public Item DropItemUnit(GameObject currentItemSlot, InventoryType inventoryType, int slotIndex)
@@ -197,6 +199,7 @@ public class InventoryManager : MonoBehaviour
             UIInventory.SetChildItemAmount(currentItemSlot, targetItem.amount);
         }
 
+        UIInventory.DisplayActiveSlot(inventoryMenu.currentAttachmentObject, false);
         return targetItem;
     }
 
@@ -223,6 +226,8 @@ public class InventoryManager : MonoBehaviour
 
         UIInventory.DisplayActiveSlot(currentItemSlot, false);
         UIInventory.RemoveInventoryItem(currentItemSlot);
+
+        UIInventory.DisplayActiveSlot(inventoryMenu.currentAttachmentObject, false);
         return droppedItem;
     }
 
@@ -230,5 +235,7 @@ public class InventoryManager : MonoBehaviour
     {
         InterchangeItems(currentItemSlot, UIInventory.PrimaryWeapon, inventoryType, slotIndex, InventoryType.PrimaryWeapon, 0);
         visualWeaponObject.SetSprite(playerInventory.primaryWeapon.sprite);
+
+        UIInventory.DisplayActiveSlot(inventoryMenu.currentAttachmentObject, false);
     }
 }
