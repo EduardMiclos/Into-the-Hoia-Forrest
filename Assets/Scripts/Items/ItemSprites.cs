@@ -10,6 +10,8 @@ public class ItemSprites : MonoBehaviour
 
     public Sprite coin;
 
+    public Sprite healthPoition;
+
     void Awake()
     {
         if (instance == null)

@@ -7,16 +7,31 @@ public class WeaponUI : MonoBehaviour
     public SpriteRenderer spriteRenderer {get; set;}
 
     /* We play this audio source whenever the weapon is upgraded. */
-    private AudioSource audioSource;
+    private AudioSource audioSourceUpgrade;
+
+    /* We play this audio source whenever the weapon is dropped. */
+    private AudioSource audioSourceDrop;
 
     void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
+        audioSourceUpgrade = GetComponents<AudioSource>()[0];
+        audioSourceDrop = GetComponents<AudioSource>()[1];
+
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public void PlayUpgradeSound()
     {
-        audioSource.Play();
+        audioSourceUpgrade.Play();
+    }
+
+    public void PlayDropSound()
+    {
+        audioSourceDrop.Play();
+    }
+
+    public void SetSprite(Sprite sprite)
+    {
+        spriteRenderer.sprite = sprite;
     }
 }

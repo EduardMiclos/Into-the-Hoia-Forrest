@@ -1,14 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class InventoryMenu : MonoBehaviour
 {
     public bool isActive = false;
     public GameObject currentAttachmentObject;
-    public int currentSubinventoryType, currentSlotIndex;
-
+    public InventoryType currentInventoryType;
+    public int currentSlotIndex;
 
     void Start()
     {
@@ -28,10 +25,10 @@ public class InventoryMenu : MonoBehaviour
         gameObject.SetActive(activeValue);
     }
 
-    public InventoryMenu AttachToGameObject(GameObject obj, int subinventoryType, int slotIndex)
+    public InventoryMenu AttachToGameObject(GameObject obj, InventoryType inventoryType, int slotIndex)
     {
         currentAttachmentObject = obj;
-        currentSubinventoryType = subinventoryType;
+        currentInventoryType = inventoryType;
         currentSlotIndex = slotIndex;
 
         SetPosition(obj.transform.position.x + 300, obj.transform.position.y);
@@ -39,29 +36,32 @@ public class InventoryMenu : MonoBehaviour
         return this;
     }
 
-
     public void BtnMoveToF_OnPress()
     {
-        //InventoryManager.instance.MoveItemToF(currentAttachmentObject, currentSubinventoryType, currentSlotIndex);
+        InventoryManager.instance.MoveItemToF(currentAttachmentObject, currentInventoryType, currentSlotIndex);
+        SetActive(false);
     }
 
     public void BtnMoveToG_OnPress()
     {
-        //InventoryManager.instance.MoveItemToG(currentAttachmentObject, currentSubinventoryType, currentSlotIndex);
+        InventoryManager.instance.MoveItemToG(currentAttachmentObject, currentInventoryType, currentSlotIndex);
+        SetActive(false);
     }
 
     public void BtnDropUnit_OnPress()
     {
-        //InventoryManager.instance.DropItemUnit(currentAttachmentObject, currentSubinventoryType, currentSlotIndex);
+        InventoryManager.instance.DropItemUnit(currentAttachmentObject, currentInventoryType, currentSlotIndex);
+        SetActive(false);
     }
 
     public void BtnDropAll_OnPress()
     {
-        //InventoryManager.instance.DropItem(currentAttachmentObject, currentSubinventoryType, currentSlotIndex);
+        InventoryManager.instance.DropItem(currentAttachmentObject, currentInventoryType, currentSlotIndex);
+        SetActive(false);
     }
 
     public void BtnSetPrimaryWeapon_OnPress()
     {
-        //InventoryManager.instance.MoveToPrimaryWeapon(currentAttachmentObject, currentSubinventoryType, currentSlotIndex);
+        InventoryManager.instance.MoveToPrimaryWeapon(currentAttachmentObject, currentInventoryType, currentSlotIndex);
     }
 }

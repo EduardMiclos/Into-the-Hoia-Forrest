@@ -10,6 +10,11 @@ public class Weapon : Item
 
     public int weaponSkill {get; set;} = 0;
 
+    public Weapon WithAmount(int amount)
+    {
+        this.amount = amount;
+        return this;
+    }
     public int IncreaseAmount() 
     {
         amount++;

@@ -113,12 +113,10 @@ public class InventoryManager : MonoBehaviour
                 UIInventory.AddPrimaryItem(item, itemSlot);
                 return true;
             }
-
             return false;
         }
-
         return false;
-    }
+    }    
 
     public void AddDefaultWeapon()
     {
@@ -146,9 +144,91 @@ public class InventoryManager : MonoBehaviour
             {
                 AddInventoryItem(givenWeapon);
             }
+        }
+        visualWeaponObject.SetSprite(givenWeapon.sprite);
+    }
 
+    public void InterchangeItems(GameObject currentItemSlot, GameObject targetSlot, InventoryType inventoryType1, int slotIndex1, InventoryType inventoryType2, int slotIndex2)
+    {
+        if (playerInventory.InterchangeItems(inventoryType1, slotIndex1, inventoryType2, slotIndex2) == true)
+        {
+            UIInventory.InterchangeItems(inventoryType1, currentItemSlot, targetSlot);
+        }
+    }
+
+    public void MoveItemToF(GameObject currentItemSlot, InventoryType inventoryType, int slotIndex)
+    {
+        GameObject FSlot = GameManager.GetObjectChild(UIInventory.PrimaryItems, "0");
+        InterchangeItems(currentItemSlot, FSlot, inventoryType, slotIndex, InventoryType.Primary, 0);
+    }
+
+    public void MoveItemToG(GameObject currentItemSlot, InventoryType inventoryType, int slotIndex)
+    {
+        GameObject GSlot = GameManager.GetObjectChild(UIInventory.PrimaryItems, "1");
+        InterchangeItems(currentItemSlot, GSlot, inventoryType, slotIndex, InventoryType.Primary, 1);
+    }
+
+    public Item DropItemUnit(GameObject currentItemSlot, InventoryType inventoryType, int slotIndex)
+    {
+        Item targetItem = null;
+
+        switch (inventoryType)
+        {
+            case InventoryType.Backpack:
+                targetItem = playerInventory.backpackItems[slotIndex];
+                break;
+            case InventoryType.Primary:
+                targetItem = playerInventory.primaryItems[slotIndex];
+                break;
+            case InventoryType.PrimaryWeapon:
+                targetItem = playerInventory.primaryWeapon;
+                break;
+            default:
+                break;
         }
 
-        visualWeaponObject.spriteRenderer.sprite = givenWeapon.sprite;
+        if (targetItem.amount <= 1)
+        {
+            DropItem(currentItemSlot, inventoryType, slotIndex);
+        }
+        else
+        {
+            targetItem.DecreaseAmount();
+            UIInventory.SetChildItemAmount(currentItemSlot, targetItem.amount);
+        }
+
+        return targetItem;
+    }
+
+    public Item DropItem(GameObject currentItemSlot, InventoryType inventoryType, int slotIndex)
+    {
+        Item droppedItem = null;
+
+        switch (inventoryType)
+        {
+            case InventoryType.Backpack:
+                droppedItem = playerInventory.RemoveBackpackItem(slotIndex);
+                break;
+            case InventoryType.Primary:
+                droppedItem = playerInventory.RemovePrimaryItem(slotIndex);
+                break;
+            case InventoryType.PrimaryWeapon:
+                droppedItem = playerInventory.RemovePrimaryWeapon();
+                visualWeaponObject.SetSprite(null);
+                visualWeaponObject.PlayDropSound();
+                break;
+            default:
+                break;
+        }
+
+        UIInventory.DisplayActiveSlot(currentItemSlot, false);
+        UIInventory.RemoveInventoryItem(currentItemSlot);
+        return droppedItem;
+    }
+
+    public void MoveToPrimaryWeapon(GameObject currentItemSlot, InventoryType inventoryType, int slotIndex)
+    {
+        InterchangeItems(currentItemSlot, UIInventory.PrimaryWeapon, inventoryType, slotIndex, InventoryType.PrimaryWeapon, 0);
+        visualWeaponObject.SetSprite(playerInventory.primaryWeapon.sprite);
     }
 }

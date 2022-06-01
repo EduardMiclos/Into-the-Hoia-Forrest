@@ -16,7 +16,7 @@ public class EventAdapter : MonoBehaviour
             GameObject itemSlot = GameManager.GetObjectChild(BackpackItems, i.ToString());
             GameObject button = GameManager.GetObjectChild(itemSlot, "Button");
 
-            button.GetComponent<Button>().onClick.AddListener(delegate { ButtonPressed(0, x); });
+            button.GetComponent<Button>().onClick.AddListener(delegate { ButtonPressed(InventoryType.Backpack, x); });
         }
 
         for (int i = 0; i < playerInventory.primaryCapacity; i++)
@@ -25,13 +25,13 @@ public class EventAdapter : MonoBehaviour
             GameObject itemSlot = GameManager.GetObjectChild(PrimaryItems, i.ToString());
             GameObject button = GameManager.GetObjectChild(itemSlot, "Button");
 
-            button.GetComponent<Button>().onClick.AddListener(delegate { ButtonPressed(1, x); });
+            button.GetComponent<Button>().onClick.AddListener(delegate { ButtonPressed(InventoryType.Primary, x); });
             
         }
 
         {
             GameObject button = GameManager.GetObjectChild(PrimaryWeapon, "Button");
-            button.GetComponent<Button>().onClick.AddListener(delegate { ButtonPressed(2, 0); });
+            button.GetComponent<Button>().onClick.AddListener(delegate { ButtonPressed(InventoryType.PrimaryWeapon, 0); });
         }
     }
 
@@ -40,42 +40,43 @@ public class EventAdapter : MonoBehaviour
         return Input.GetKeyDown(keyCode);
     }
 
-    public bool ButtonPressed(int subinventoryType, int slotIndex)
+    public bool ButtonPressed(InventoryType inventoryType, int slotIndex)
     {
         GameObject pressedObject = null;
         Item selectedItem = null;
         bool isPrimaryWeapon = false;
 
-        switch (subinventoryType)
+        switch (inventoryType)
         {
             /* Backpack items. */
-            case 0:
+            case InventoryType.Backpack:
                 selectedItem = InventoryManager.instance.playerInventory.backpackItems[slotIndex];
                 if (selectedItem == null)
                 {
                     return false;
                 }
-
+                isPrimaryWeapon = false;
                 pressedObject = GameManager.GetObjectChild(
                     obj: InventoryManager.instance.UIInventory.Items,
                     childName: slotIndex.ToString());
                 break;
 
             /* Primary items. */
-            case 1:
+            case InventoryType.Primary:
                 selectedItem = InventoryManager.instance.playerInventory.primaryItems[slotIndex];
                 if (selectedItem == null)
                 {
                     return false;
                 }
 
+                isPrimaryWeapon = false;
                 pressedObject = GameManager.GetObjectChild(
                    obj: InventoryManager.instance.UIInventory.PrimaryItems,
                    childName: slotIndex.ToString());
                 break;
 
             /* Primary Weapon. */
-            case 2:
+            case InventoryType.PrimaryWeapon:
                 selectedItem = InventoryManager.instance.playerInventory.primaryWeapon;
                 if (selectedItem == null)
                 {
@@ -111,7 +112,7 @@ public class EventAdapter : MonoBehaviour
                 InventoryManager.instance.UIInventory.DisplayActiveSlot(InventoryManager.instance.inventoryMenu.currentAttachmentObject, false);
             }
 
-            InventoryManager.instance.inventoryMenu.AttachToGameObject(pressedObject, subinventoryType, slotIndex).SetActive(true);
+            InventoryManager.instance.inventoryMenu.AttachToGameObject(pressedObject, inventoryType, slotIndex).SetActive(true);
             InventoryManager.instance.UIInventory.DisplayActiveSlot(pressedObject, true);
         }
 
