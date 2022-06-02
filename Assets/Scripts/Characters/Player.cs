@@ -13,6 +13,8 @@ public class Player : Actor
 
         speed = GameManager.instance.initialPlayerSpeed;
         inventory = InventoryManager.instance.playerInventory;
+
+        blockingLayers = new string[]{ "Blocking", "Enemy"};
     }
 
     private void FixedUpdate()

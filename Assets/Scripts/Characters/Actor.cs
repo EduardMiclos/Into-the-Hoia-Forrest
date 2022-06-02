@@ -13,6 +13,8 @@ public abstract class Actor : MonoBehaviour, Mover {
 
     public WeaponUI weapon;
 
+    protected string[] blockingLayers;
+
     private void SwapSprite()
     {
         transform.localScale = new Vector3(deltaTranslate.x < 0 ? -1f : 1f, 1f, 1f);
@@ -81,7 +83,7 @@ public abstract class Actor : MonoBehaviour, Mover {
             angle: 0,
             direction: new Vector2(0, deltaTranslate.y),
             distance: Mathf.Abs(deltaTranslate.y * Time.deltaTime),
-            layerMask: LayerMask.GetMask("Blocking")
+            layerMask: LayerMask.GetMask(blockingLayers)
         );
 
         /* If the raycast is null, it means that 
@@ -99,10 +101,10 @@ public abstract class Actor : MonoBehaviour, Mover {
         raycastHit = Physics2D.BoxCast(
             origin: transform.position,
             size: boxCollider.size,
-            angle: 0,
+            angle: 0,   
             direction: new Vector2(deltaTranslate.x, 0),
             distance: Mathf.Abs(deltaTranslate.x * Time.deltaTime),
-            layerMask: LayerMask.GetMask("Blocking")
+            layerMask: LayerMask.GetMask(blockingLayers)
         );
 
         if (raycastHit.collider == null)

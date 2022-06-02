@@ -14,6 +14,6 @@ public class ForestGuardian : NPC
         HealthPotion givenHealthPotions = new HealthPotion().WithAmount(2);
         InventoryManager.instance.AddInventoryItem(givenHealthPotions);
 
-        //GameManager.instance.ActivateTeleport();
+        GameManager.instance.ActivateTeleport();
     }
 }

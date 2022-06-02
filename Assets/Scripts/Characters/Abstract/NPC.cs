@@ -6,7 +6,7 @@ using UnityEngine.Experimental.Rendering.Universal;
 /* This is a class used for all the STATIC NPCs,
 meaning NPC that are not characterized by movement or
 walking animations and contribute to the story of the game. */
-public class NPC : Collidable
+public abstract class NPC : Collidable
 {
     public Dialogue dialogue;
     private Light2D light2d;
