@@ -24,4 +24,9 @@ public class Player : Actor
 
         Move(new Vector3(moveX, moveY, 0));
     }
+
+    public void Attack()
+    {
+        InventoryManager.instance.visualWeaponObject.AnimateAttack();
+    }
 }

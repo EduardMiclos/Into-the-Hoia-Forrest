@@ -26,8 +26,11 @@ public class Weapon : Item
         amount--;
         return amount;
     }
-    
-    public void Use() {}
+
+    public void Use()
+    {
+        
+    }
 
     public bool Upgrade()
     {

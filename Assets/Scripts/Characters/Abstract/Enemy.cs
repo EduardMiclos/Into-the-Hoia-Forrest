@@ -19,12 +19,13 @@ public abstract class Enemy : Actor
 
     private void FollowPlayer()
     {
+        Vector3 moveVector = playerTransform.position - transform.position;
+        moveVector = moveVector.normalized;
+
         if (Vector3.Distance(transform.position, playerTransform.position) < minimumDistance)
         {
-            Move(-playerTransform.position.normalized);
+            Move(moveVector);
         }
-
-        //Move(Vector3.MoveTowards(this.transform.position, playerTransform.position, 0.1f));
     }
 
     public void FixedUpdate()

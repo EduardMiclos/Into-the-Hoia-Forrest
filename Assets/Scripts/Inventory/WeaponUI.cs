@@ -12,12 +12,15 @@ public class WeaponUI : MonoBehaviour
     /* We play this audio source whenever the weapon is dropped. */
     private AudioSource audioSourceDrop;
 
+    public Animator animator;
+
     void Awake()
     {
         audioSourceUpgrade = GetComponents<AudioSource>()[0];
         audioSourceDrop = GetComponents<AudioSource>()[1];
 
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     public void PlayUpgradeSound()
@@ -33,5 +36,10 @@ public class WeaponUI : MonoBehaviour
     public void SetSprite(Sprite sprite)
     {
         spriteRenderer.sprite = sprite;
+    }
+
+    public void AnimateAttack()
+    {
+        //animator.SetBool("isAttack", true);
     }
 }

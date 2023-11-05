@@ -68,6 +68,11 @@ public class GameManager : MonoBehaviour
                 InventoryManager.instance.OpenInventory();
             }
         }
+
+        if (eventAdapter.IsKeyPressed(KeyCode.Space))
+        {
+            player.Attack();
+        }
     }
 
     public static GameObject GetObjectChild(GameObject obj, string childName)
